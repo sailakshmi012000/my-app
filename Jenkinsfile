@@ -17,4 +17,4 @@ pipeline {
     }
   }
 }
-// this is to test jenkins poll SCM
+// this is to test github hook trigger
