@@ -1,20 +1,22 @@
-@Library("mylibs") _
-pipeline {
-  agent any
-  tools {
-    maven 'maven2'
-  }
-  stages{
-    stage("Maven Build"){
-      steps{
-        sh "mvn clean package"
-      }
+@Library("sailibs") _
+pipeline{
+    agent any
+    stages{
+        stage("git-checkout"){
+            steps{
+                git credentialsId: 'github-creds', url: 'https://github.com/sailakshmi012000/my-app'
+            }
+        }
+        stage("maven-build"){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
+        stage("tomcat-deploy"){
+            steps{
+                tomcatdeploy("tomcat-dev","ec2-user","172.31.88.211")
+
+            }
+        }
     }
-    stage("Deploy To Dev"){
-      steps{
-        tomcatDeploy("tomcat-dev","ec2-user",["172.31.13.89","172.31.13.89"])
-      }
-    }
-  }
 }
-// this is to test github hook trigger
