@@ -1,8 +1,6 @@
 @Library("sailibs") _
 pipeline{
-    agent{
-        label "linux"
-    }
+    agent any
     stages{
         stage("git-checkout"){
             steps{
