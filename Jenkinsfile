@@ -8,6 +8,7 @@ pipeline{
             steps{
                  git credentialsId: 'github-creds', url: 'https://github.com/sailakshmi012000/my-app'
             }
+        }   
          stage(maven){
              steps{
              sh 'mvn package'
@@ -20,4 +21,3 @@ pipeline{
             }
         }
     }
-}
