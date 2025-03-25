@@ -15,6 +15,7 @@ pipeline{
             stage(tomcat){
                 steps{
                     tomcatdeploy("tomcat-dev","ec2-user","172.31.88.211")
+                    //this is dummy change
                 }
             }
         }
